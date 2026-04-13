@@ -1,10 +1,40 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { RouterProvider } from 'react-router/dom'
+import { createBrowserRouter } from 'react-router'
+import RootLayout from './layout/RootLayout'
+import ErrorPage from './pages/errorpage/ErrorPage'
+import HomePage from './pages/homepage/HomePage'
+import TimeLine from './pages/timeline/TimeLine'
+import Stats from './pages/stats/Stats'
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: RootLayout,
+    children: [
+      {
+        path: '/',
+        Component: HomePage
+      },
+      {
+        path: '/timeline',
+        Component: TimeLine
+      },
+      {
+        path: '/stats',
+        Component: Stats
+      }
+    ],
+    errorElement: <ErrorPage />
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <h2 className='text-2xl text-green-500 font-bold'>Hello React</h2>
+  
+    <RouterProvider router={router} />
+
   </StrictMode>,
 )
