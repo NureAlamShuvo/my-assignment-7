@@ -17,7 +17,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/timeline',
-        Component: TimeLine
+        Component: TimeLine,
+        loader: async () => {
+          const res = await fetch('/data.json');
+          return res.json();
+        }
       },
       {
         path: '/stats',

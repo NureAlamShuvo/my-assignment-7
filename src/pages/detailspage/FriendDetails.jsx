@@ -5,16 +5,36 @@ import { IoVideocamOutline } from 'react-icons/io5';
 import { LuBellRing } from 'react-icons/lu';
 import { MdDelete, MdOutlineTextsms } from 'react-icons/md';
 import { useLoaderData, } from 'react-router';
+import { toast } from 'react-toastify';
 
 const FriendDetails = () => {
 
     const friend = useLoaderData();
-    console.log(friend);
+
+    const handleCheckInBtn = (type) => {
+        const newEntry = {
+            id: Date.now(),
+            friendId: friend.id,
+            friendName: friend.name,
+            type,
+            date: new Date().toLocaleDateString()
+        };
+
+        const oldData = JSON.parse(sessionStorage.getItem("timeline")) || [];
+
+        sessionStorage.setItem("timeline", JSON.stringify([newEntry, ...oldData]));
+
+        const updated = [newEntry, ...oldData];
+
+        localStorage.setItem("timeline", JSON.stringify(updated));
+        
+        toast.success(`${type} with ${friend.name} added!`);
+    };
 
     const statusBadge = friend.status === "overdue" ? "bg-[#EF4444] text-white" : friend.status === "almost due" ? "bg-[#EFAD44] text-white" : "bg-[#244D3F] text-white";
 
     return (
-        <div className='container mx-auto mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6'>
+        <div className='container mx-auto mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 px-4'>
             <div>
                 <div className='rounded-xl shadow-sm text-center p-6 space-y-4'>
                     <img src={friend.picture} alt='' className='w-40 h-40 mx-auto rounded-full' />
@@ -65,28 +85,30 @@ const FriendDetails = () => {
                 <div className='shadow-sm rounded-xl p-6'>
                     <div className='flex justify-between'>
 
-                    <h2 className='font-semibold text-3xl text-[#244D3F]'>Relationship Goal</h2>
-                    <button className="btn btn-active">Edit</button>
+                        <h2 className='font-semibold text-3xl text-[#244D3F]'>Relationship Goal</h2>
+                        <button className="btn btn-active">Edit</button>
 
                     </div>
                     <p><span className='text-[#64748B] font-medium'>Connect every</span> <span className='font-semibold text-[#1F2937]'>30 days</span></p>
                 </div>
 
+
                 <div className='shadow-sm rounded-xl p-6'>
+
                     <h2 className='font-medium text-xl text-[#244D3F]'>Quick Check-In</h2>
-                    <div className='flex gap-4 mt-4'>
-                        
-                        <div className='bg-[#E9E9E9] p-6 px-20 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-300 hover:shadow-md'>
+                    <div className='flex gap-4 mt-4 flex-wrap'>
+
+                        <div onClick={() => handleCheckInBtn('Call')} className='bg-[#E9E9E9] p-6 w-40 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-300 hover:shadow-md'>
                             <FiPhoneCall size={20} />
                             <h2 className='text-[#1F2937] font-medium'>Call</h2>
                         </div>
-                        <div className='bg-[#E9E9E9] p-6 px-20 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-300 hover:shadow-md'>
+                        <div onClick={() => handleCheckInBtn('Text')} className='bg-[#E9E9E9] p-6 w-40 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-300 hover:shadow-md'>
                             <MdOutlineTextsms size={20} />
-                            <h2 className='text-[#1F2937] font-medium'>Call</h2>
+                            <h2 className='text-[#1F2937] font-medium'>Text</h2>
                         </div>
-                        <div className='bg-[#E9E9E9] p-6 px-20 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-300 hover:shadow-md'>
+                        <div onClick={() => handleCheckInBtn('Video')} className='bg-[#E9E9E9] p-6 w-40 rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-300 hover:shadow-md'>
                             <IoVideocamOutline size={20} />
-                            <h2 className='text-[#1F2937] font-medium'>Call</h2>
+                            <h2 className='text-[#1F2937] font-medium'>Video</h2>
                         </div>
 
                     </div>
