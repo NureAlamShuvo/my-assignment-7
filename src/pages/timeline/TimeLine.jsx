@@ -25,7 +25,19 @@ const TimeLine = () => {
 
 
     if (saved.length === 0) {
-        return <p className='text-center mt-20 text-gray-400'>No check-ins yet!</p>;
+        return <div className="flex justify-center items-center min-h-[60vh]">
+            <div className="bg-white shadow-md rounded-xl px-10 py-8 text-center">
+                
+                <h2 className="text-2xl font-semibold text-[#1F2937] mb-2">
+                    No check-ins yet 😔
+                </h2>
+
+                <p className="text-gray-500">
+                    Start connecting with your friends to see your timeline here.
+                </p>
+
+            </div>
+        </div>
     }
 
     return (
