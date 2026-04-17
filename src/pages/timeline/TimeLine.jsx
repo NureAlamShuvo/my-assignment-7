@@ -29,7 +29,7 @@ const TimeLine = () => {
             <div className="bg-white shadow-md rounded-xl px-10 py-8 text-center">
                 
                 <h2 className="text-2xl font-semibold text-[#1F2937] mb-2">
-                    No check-ins yet 😔
+                    No history yet!
                 </h2>
 
                 <p className="text-gray-500">

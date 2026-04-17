@@ -1,16 +1,40 @@
-# React + Vite
+# 🌿 KeenKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+KeenKeeper is a clean and simple React-based web application that helps users maintain meaningful relationships by tracking interactions with friends.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📌 Project Description
 
-## React Compiler
+KeenKeeper allows users to track their communication with friends through calls, texts, and video chats. It helps users stay connected by showing the last interaction time and providing insights into their communication habits.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ⚙️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- React Router
+- Tailwind CSS
+- DaisyUI
+- Recharts
+- React Icons
+- React-Toastify
+- Session Storage (for temporary data persistence)
+
+---
+
+## 🚀 Key Features
+
+### 📊 Friendship Analytics
+- Interactive pie chart showing Call, Text, and Video interactions
+- Data updates dynamically based on user activity
+
+### 🧑‍🤝‍🧑 Friend Management
+- Display all friends with profile details
+- View individual friend details
+- Track days since last contact
+
+### 🕒 Timeline Tracking
+- Add interaction logs (Call, Text, Video)
+- View history of interactions
+- Filter timeline by interaction type

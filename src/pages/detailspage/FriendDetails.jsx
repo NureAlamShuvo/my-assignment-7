@@ -28,7 +28,7 @@ const FriendDetails = () => {
 
         localStorage.setItem("timeline", JSON.stringify(updated));
         
-        toast.success(`${type} with ${friend.name} added!`);
+        toast.success(`${type} with ${friend.name}`);
     };
 
     const statusBadge = friend.status === "overdue" ? "bg-[#EF4444] text-white" : friend.status === "almost due" ? "bg-[#EFAD44] text-white" : "bg-[#244D3F] text-white";
@@ -51,7 +51,7 @@ const FriendDetails = () => {
                     <p className='text-[#64748B]'>Email: {friend.email}</p>
                 </div>
 
-                {/* Snozee */}
+                
                 <div className='space-y-2 mt-4'>
 
                     <button className="btn btn-active w-full text-[#1F2937]"><LuBellRing />Snooze 2 weeks</button>
@@ -62,7 +62,7 @@ const FriendDetails = () => {
                 </div>
             </div>
 
-            {/* right section */}
+            
 
             <div className='space-y-6'>
                 <div className='grid grid-cols-3 text-center gap-6'>
@@ -89,7 +89,7 @@ const FriendDetails = () => {
                         <button className="btn btn-active">Edit</button>
 
                     </div>
-                    <p><span className='text-[#64748B] font-medium'>Connect every</span> <span className='font-semibold text-[#1F2937]'>30 days</span></p>
+                    <p><span className='text-[#64748B] font-medium'>Connect every</span> <span className='font-semibold text-[#1F2937]'>{friend.goal} days</span></p>
                 </div>
 
 

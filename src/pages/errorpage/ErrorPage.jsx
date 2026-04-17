@@ -8,7 +8,7 @@ const ErrorPage = () => {
       <div className="text-center space-y-6 animate-pulse">
 
         {/* Error Code */}
-        <h1 className="text-8xl font-extrabold text-error">
+        <h1 className="text-8xl font-extrabold text-[#244D3F]">
           404
         </h1>
 
@@ -30,7 +30,7 @@ const ErrorPage = () => {
         {/* Buttons */}
         <div className="flex justify-center gap-4 mt-4">
 
-          <Link to="/" className="btn btn-primary">
+          <Link to="/" className="btn bg-[#244D3F] text-white">
             Go Home
           </Link>
 
